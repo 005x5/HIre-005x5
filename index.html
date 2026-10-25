@@ -1,1 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire 005x5</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(ellipse at 50% 50%, rgba(88, 101, 242, 0.08) 0%, transparent 60%);
+            animation: pulse 8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .container { width: 100%; max-width: 680px; position: relative; z-index: 1; }
+
+        .header { text-align: center; margin-bottom: 32px; }
+
+        .header-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #5865F2, #3b4bb3);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            box-shadow: 0 0 40px rgba(88, 101, 242, 0.1);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 6px;
+            text-shadow: 0 0 60px rgba(88, 101, 242, 0.15);
+        }
+
+        .header h1 span { color: #5865F2; }
+
+        .header-sub { color: rgba(255,255,255,0.4); font-size: 0.95rem; font-weight: 400; }
+
+        .main-card {
+            background: #232427;
+            border: 1px solid rgba(88, 101, 242, 0.08);
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(88, 101, 242, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .main-card:hover {
+            border-color: rgba(88, 101, 242, 0.2);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9), 0 0 80px rgba(88, 101, 242, 0.05);
+        }
+
+        .form-section { margin-bottom: 20px; }
+        .form-group { margin-bottom: 24px; }
+        .form-group:last-child { margin-bottom: 0; }
+
+        label {
+            display: flex;
+            align-items: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .label-icon { margin-right: 8px; font-size: 0.8rem; color: #5865F2; }
+        .required { color: #5865F2; margin-left: 4px; }
+
+        .amount-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: #2a2b2f;
+            border: 1px solid rgba(88, 101, 242, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .amount-wrapper:focus-within {
+            border-color: #5865F2;
+            background: #2f3035;
+            box-shadow: 0 0 0 4px rgba(88, 101, 242, 0.06), 0 0 30px rgba(88, 101, 242, 0.02);
+        }
+
+        .dollar-sign {
+            color: #5865F2;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 14px 18px 14px 8px;
+            pointer-events: none;
+            z-index: 2;
+            min-width: 30px;
+            text-align: right;
+        }
+
+        .amount-input {
+            width: 100%;
+            padding: 14px 4px 14px 18px;
+            background: transparent;
+            border: none;
+            color: #A79B7F;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+
+        .amount-input::placeholder { color: rgba(167, 155, 127, 0.3); }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: #2a2b2f;
+            border: 1px solid rgba(88, 101, 242, 0.08);
+            border-radius: 12px;
+            color: #A79B7F;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder, textarea::placeholder { color: rgba(167, 155, 127, 0.3); }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #5865F2;
+            background: #2f3035;
+            box-shadow: 0 0 0 4px rgba(88, 101, 242, 0.06), 0 0 30px rgba(88, 101, 242, 0.02);
+        }
+
+        textarea { resize: vertical; min-height: 100px; }
+
+        .field-hint { display: block; margin-top: 6px; font-size: 0.75rem; color: rgba(255,255,255,0.15); }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(88, 101, 242, 0.1), transparent);
+            margin: 28px 0;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-info { display: flex; gap: 12px; flex-wrap: wrap; }
+
+        .info-badge {
+            background: rgba(88, 101, 242, 0.03);
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.25);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .info-badge.highlight {
+            border-color: rgba(88, 101, 242, 0.15);
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer-buttons { display: flex; gap: 12px; }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-icon { font-size: 1rem; }
+
+        .btn-clear {
+            background: rgba(255,255,255,0.03);
+            color: rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .btn-clear:hover:not(:disabled) {
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.5);
+        }
+
+        .btn-send {
+            background: linear-gradient(135deg, #5865F2, #3b4bb3);
+            color: white;
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.05);
+        }
+
+        .btn-send:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(88, 101, 242, 0.15);
+            border-color: rgba(88, 101, 242, 0.5);
+        }
+
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .spinner { display: inline-block; animation: spin 1s linear infinite; font-size: 1.2rem; color: white; }
+
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .status-message {
+            margin-top: 20px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .status-message.success {
+            display: block;
+            background: rgba(87, 242, 135, 0.04);
+            color: #57f287;
+            border: 1px solid rgba(87, 242, 135, 0.08);
+        }
+
+        .status-message.error {
+            display: block;
+            background: rgba(237, 66, 69, 0.04);
+            color: #ed4245;
+            border: 1px solid rgba(237, 66, 69, 0.08);
+        }
+
+        .status-message.info {
+            display: block;
+            background: rgba(88, 101, 242, 0.04);
+            color: #5865F2;
+            border: 1px solid rgba(88, 101, 242, 0.08);
+        }
+
+        .footer-note {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.12);
+            font-size: 0.75rem;
+        }
+
+        .dot {
+            width: 4px; height: 4px;
+            background: #5865F2;
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(88, 101, 242, 0.3);
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        .website-credit {
+            text-align: center;
+            margin-top: 16px;
+            color: rgba(255,255,255,0.1);
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 640px) {
+            .main-card { padding: 24px; }
+            .header h1 { font-size: 2rem; }
+            .form-footer { flex-direction: column; align-items: stretch; }
+            .footer-buttons { flex-direction: column; width: 100%; }
+            .btn { justify-content: center; width: 100%; }
+            .footer-info { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-badge">HIRE 005x5</div>
+            <h1>Hire <span>005x5</span></h1>
+            <p class="header-sub">He will send you a DM later</p>
+        </div>
+
+        <div class="main-card">
+            <form id="hireForm">
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="discordName">
+                            <span class="label-icon">◆</span>
+                            DISCORD NAME
+                            <span class="required">*</span>
+                        </label>
+                        <input type="text" id="discordName" placeholder="Enter your Discord username..." required>
+                        <span class="field-hint">Your Discord tag (e.g. User#1234)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task">
+                            <span class="label-icon">◆</span>
+                            WHAT SHOULD I DO?
+                            <span class="required">*</span>
+                        </label>
+                        <textarea id="task" placeholder="Describe your task in detail..." rows="4" required></textarea>
+                        <span class="field-hint">Be specific about what you need help with</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">
+                            <span class="label-icon">◆</span>
+                            HOW MUCH $
+                            <span class="required">*</span>
+                        </label>
+                        <div class="amount-wrapper">
+                            <input type="text" id="amount" class="amount-input" placeholder="0.00" required>
+                            <span class="dollar-sign">$</span>
+                        </div>
+                        <span class="field-hint">Automatically formats as dollars (e.g. 10.50$)</span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="form-footer">
+                    <div class="footer-info">
+                        <span class="info-badge">MAX 1 REQUEST PER BATCH</span>
+                        <span class="info-badge highlight" id="statusCounter">0 requests sent</span>
+                    </div>
+                    <div class="footer-buttons">
+                        <button type="reset" class="btn btn-clear" id="clearBtn">
+                            <span class="btn-icon">×</span>
+                            Clear
+                        </button>
+                        <button type="submit" class="btn btn-send" id="submitBtn">
+                            <span class="btn-icon">→</span>
+                            <span class="btn-text">Send Request</span>
+                            <span class="spinner" style="display:none;">⟳</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+
+        <div class="footer-note">
+            <span class="dot"></span>
+            <span>005x5 will respond via DM • Ready to hire</span>
+        </div>
+
+        <div class="website-credit">
+            website by 005x5
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
