@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnText = document.querySelector('.btn-text');
     const spinner = document.querySelector('.spinner');
 
-    const WEBHOOK_URL = 'https://discord.com/api/webhooks/1563984516169867504/8HBEEbhqLQBY_0I6UA5Z1LaSINi2ZVuo82mG0A70BfgZGerg0GsqRa_ik-4MANiK6lph';
+    const WEBHOOK_URL = 'https://discord.com/api/webhooks/1564000456143798374/Toz7u_3riFn69MbJGiVRLKxF81P4cKio6BaSenxScrMxifkzwUTYgR1461XbrlOezuZN';
     let requestCount = 0;
     let isSubmitting = false;
 
