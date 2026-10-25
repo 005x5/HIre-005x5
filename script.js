@@ -6,7 +6,7 @@
    - showStatus(message, type)
    ========================================================= */
 
-const WEBHOOK_URL = 'https://discord.com/api/webhooks/1562877318278684683/NwG-CW9Dnig2pdcDK8I4KCguklry8P91BJroZRqZGdkSiq44wXJgWy3sVmywDKqUCRv5';
+const WEBHOOK_URL = 'https://discord.com/api/webhooks/1564014312253685880/QF1f3QCEGXk63_x5TFnzwFKf95CANSUUdwA94SCJmuFD1zTYmzNuPZr7U6aW4tkcMgDB';
 
 const form = document.getElementById('hireForm');
 const discordNameInput = document.getElementById('discordName');
